@@ -2,13 +2,15 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Shield, LayoutDashboard, Store, Users, Activity, LogOut } from 'lucide-react'
+import { Shield, LayoutDashboard, Store, Users, Activity, LogOut, ClipboardList } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 const NAV = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard, exact: true },
   { href: '/admin/salons', label: 'Salões', icon: Store },
+  { href: '/admin/requests', label: 'Solicitações', icon: ClipboardList, badge: true },
   { href: '/admin/users', label: 'Usuários', icon: Users },
   { href: '/admin/logs', label: 'Logs', icon: Activity },
 ]
@@ -16,6 +18,14 @@ const NAV = [
 export function AdminSidebar() {
   const pathname = usePathname()
   const router = useRouter()
+  const [pendingCount, setPendingCount] = useState(0)
+
+  useEffect(() => {
+    fetch('/api/admin/requests?status=pending')
+      .then(r => r.json())
+      .then((data: unknown[]) => setPendingCount(Array.isArray(data) ? data.length : 0))
+      .catch(() => {})
+  }, [pathname])
 
   async function logout() {
     await fetch('/api/admin/auth', { method: 'DELETE' })
@@ -32,7 +42,7 @@ export function AdminSidebar() {
       </div>
 
       <nav className="flex-1 px-3 py-4 space-y-0.5">
-        {NAV.map(({ href, label, icon: Icon, exact }) => {
+        {NAV.map(({ href, label, icon: Icon, exact, badge }) => {
           const active = exact ? pathname === href : pathname.startsWith(href)
           return (
             <Link
@@ -46,7 +56,12 @@ export function AdminSidebar() {
               )}
             >
               <Icon className="w-4 h-4" />
-              {label}
+              <span className="flex-1">{label}</span>
+              {badge && pendingCount > 0 && (
+                <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[1.25rem] text-center">
+                  {pendingCount}
+                </span>
+              )}
             </Link>
           )
         })}

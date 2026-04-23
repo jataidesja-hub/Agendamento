@@ -6,7 +6,8 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { toast } from 'sonner'
-import { Eye, EyeOff, Scissors } from 'lucide-react'
+import Link from 'next/link'
+import { Eye, EyeOff, Scissors, Sparkles } from 'lucide-react'
 import { createClient } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -81,7 +82,34 @@ export function LoginForm() {
           </form>
         </div>
 
-        <p className="text-center text-xs text-gray-400 mt-6">
+        {/* Divider */}
+        <div className="flex items-center gap-3 mt-6">
+          <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
+          <span className="text-xs text-gray-400">ou</span>
+          <div className="flex-1 h-px bg-gray-200 dark:bg-gray-800" />
+        </div>
+
+        {/* CTA para quem não tem acesso */}
+        <div className="mt-4 bg-gradient-to-br from-brand-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 rounded-2xl border border-brand-100 dark:border-gray-700 p-5 text-center space-y-3">
+          <div className="inline-flex items-center justify-center w-10 h-10 bg-brand-600 rounded-xl">
+            <Sparkles className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">Ainda não tem acesso?</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 leading-relaxed">
+              Solicite seu aplicativo e nossa equipe entrará em contato pelo WhatsApp.
+            </p>
+          </div>
+          <Link
+            href="/solicitar"
+            className="inline-flex items-center justify-center gap-2 w-full h-10 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-medium transition-colors"
+          >
+            <Sparkles className="w-4 h-4" />
+            Solicitar meu aplicativo
+          </Link>
+        </div>
+
+        <p className="text-center text-xs text-gray-400 mt-4">
           Acesso exclusivo para proprietários de salões cadastrados.
         </p>
       </div>
