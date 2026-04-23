@@ -12,7 +12,18 @@
       "Bash(git init *)",
       "Bash(git branch *)",
       "Bash(git config *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(grep \".env.local$\")",
+      "Bash(git commit -m ' *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -X POST https://rlpvwcxxckswwxjhbhih.supabase.co/rest/v1/rpc/exec_sql -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJscHZ3Y3h4Y2tzd3d4amhiaGloIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Njk2NTM2MSwiZXhwIjoyMDkyNTQxMzYxfQ.LE8s5RQ2_6CLOnoikaTWR3zfY-2lAvlOWOXnOwUwsQo' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJscHZ3Y3h4Y2tzd3d4amhiaGloIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Njk2NTM2MSwiZXhwIjoyMDkyNTQxMzYxfQ.LE8s5RQ2_6CLOnoikaTWR3zfY-2lAvlOWOXnOwUwsQo' -H 'Content-Type: application/json' -d '{\"query\":\"SELECT 1 as ok\"}')",
+      "Bash(curl -s -X POST https://api.supabase.com/v1/projects/rlpvwcxxckswwxjhbhih/database/query -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJscHZ3Y3h4Y2tzd3d4amhiaGloIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Njk2NTM2MSwiZXhwIjoyMDkyNTQxMzYxfQ.LE8s5RQ2_6CLOnoikaTWR3zfY-2lAvlOWOXnOwUwsQo' -H 'Content-Type: application/json' -d '{\"query\":\"SELECT 1 as ok\"}')",
+      "Bash(npx supabase *)",
+      "Bash(curl -s -X POST https://rlpvwcxxckswwxjhbhih.supabase.co/pg/sql -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJscHZ3Y3h4Y2tzd3d4amhiaGloIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Njk2NTM2MSwiZXhwIjoyMDkyNTQxMzYxfQ.LE8s5RQ2_6CLOnoikaTWR3zfY-2lAvlOWOXnOwUwsQo' -H 'Content-Type: application/json' -d '{\"query\":\"SELECT version\\(\\)\"}')",
+      "Bash(git commit -m 'chore: add Vercel config, GitHub Actions CI and DB setup script *)",
+      "Read(//tmp/**)"
     ]
   }
 }
