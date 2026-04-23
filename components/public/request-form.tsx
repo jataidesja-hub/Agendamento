@@ -17,7 +17,7 @@ const schema = z.object({
   full_name:    z.string().min(3, 'Nome deve ter ao menos 3 caracteres'),
   company_name: z.string().min(2, 'Nome da empresa obrigatório'),
   email:        z.string().email('E-mail inválido'),
-  whatsapp:     z.string().min(14, 'WhatsApp inválido'),
+  whatsapp:     z.string().min(15, 'WhatsApp inválido (ex: (11) 99999-9999)'),
 })
 type FormData = z.infer<typeof schema>
 
@@ -36,7 +36,7 @@ export function RequestForm() {
   async function onSubmit(data: FormData) {
     const payload = {
       ...data,
-      whatsapp: data.whatsapp.replace(/\D/g, ''),
+      whatsapp: '55' + data.whatsapp.replace(/\D/g, ''),
     }
     const { error } = await supabase.from('salon_requests').insert(payload)
     if (error) {
@@ -193,14 +193,17 @@ export function RequestForm() {
               <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 WhatsApp <span className="text-red-500">*</span>
               </label>
-              <div className="relative">
-                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <div className="flex h-11 rounded-xl border border-gray-300 dark:border-gray-600 overflow-hidden focus-within:ring-2 focus-within:ring-brand-500">
+                <div className="flex items-center gap-1.5 px-3 bg-gray-100 dark:bg-gray-700 border-r border-gray-300 dark:border-gray-600 shrink-0">
+                  <Phone className="w-4 h-4 text-gray-400" />
+                  <span className="text-sm text-gray-500 dark:text-gray-400 select-none">+55</span>
+                </div>
                 <input
                   type="tel"
                   placeholder="(11) 99999-9999"
                   value={whatsappValue}
-                  onChange={(e) => setValue('whatsapp', maskPhone(e.target.value))}
-                  className="w-full h-11 pl-10 pr-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+                  onChange={(e) => setValue('whatsapp', maskPhone(e.target.value), { shouldValidate: true })}
+                  className="flex-1 h-full px-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder:text-gray-400 focus:outline-none text-sm"
                 />
               </div>
               {errors.whatsapp && <p className="text-xs text-red-500">{errors.whatsapp.message}</p>}
