@@ -23,7 +23,15 @@
       "Bash(npx supabase *)",
       "Bash(curl -s -X POST https://rlpvwcxxckswwxjhbhih.supabase.co/pg/sql -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJscHZ3Y3h4Y2tzd3d4amhiaGloIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Njk2NTM2MSwiZXhwIjoyMDkyNTQxMzYxfQ.LE8s5RQ2_6CLOnoikaTWR3zfY-2lAvlOWOXnOwUwsQo' -H 'Content-Type: application/json' -d '{\"query\":\"SELECT version\\(\\)\"}')",
       "Bash(git commit -m 'chore: add Vercel config, GitHub Actions CI and DB setup script *)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(node -e ' *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3002/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3002/login)",
+      "Bash(curl -s -o /dev/null -w \" %{http_code}\" http://localhost:3002/admin/login)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://agendamento-orpin-ten.vercel.app/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://agendamento-orpin-ten.vercel.app/login)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" https://agendamento-orpin-ten.vercel.app/admin/login)",
+      "Bash(git commit -m 'chore: update production URL to agendamento-orpin-ten.vercel.app *)"
     ]
   }
 }
