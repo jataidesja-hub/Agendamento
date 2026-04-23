@@ -5,6 +5,6 @@
   "installCommand": "npm install",
   "regions": ["gru1"],
   "env": {
-    "NEXT_PUBLIC_APP_URL": "https://agendamento.vercel.app"
+    "NEXT_PUBLIC_APP_URL": "https://agendamento-orpin-ten.vercel.app"
   }
 }
