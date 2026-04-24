@@ -9,19 +9,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const supabase = createServerSupabaseClient()
   const { data: salon } = await supabase
     .from('salons')
-    .select('name, description, logo_url')
+    .select('name, description, logo_url, primary_color')
     .eq('slug', params.slug)
     .eq('is_active', true)
     .single()
 
   if (!salon) return { title: 'Salão não encontrado' }
 
+  const description = salon.description || `Agende seu horário em ${salon.name}`
+  const themeColor = salon.primary_color || '#d946ef'
+
   return {
     title: salon.name,
-    description: salon.description || `Agende seu horário em ${salon.name}`,
+    description,
+    manifest: `/api/manifest/${params.slug}`,
+    themeColor,
+    appleWebApp: {
+      capable: true,
+      title: salon.name,
+      statusBarStyle: 'default',
+    },
+    icons: {
+      apple: salon.logo_url || '/icons/icon-192x192.png',
+    },
     openGraph: {
       title: salon.name,
-      description: salon.description || '',
+      description,
       images: salon.logo_url ? [salon.logo_url] : [],
     },
   }

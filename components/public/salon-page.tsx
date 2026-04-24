@@ -7,6 +7,7 @@ import { formatCurrency, formatDuration } from '@/lib/utils'
 import { buildSalonWhatsAppLink } from '@/lib/whatsapp'
 import { SALON_CATEGORIES, type SalonCategory } from '@/types'
 import type { Salon, Service } from '@/types'
+import { PwaInstallPrompt } from '@/components/public/pwa-install-prompt'
 
 export function SalonPublicPage({ salon, services }: { salon: Salon; services: Service[] }) {
   const primary = salon.primary_color || '#d946ef'
@@ -170,6 +171,9 @@ export function SalonPublicPage({ salon, services }: { salon: Salon; services: S
           )}
         </div>
       </div>
+
+      {/* PWA install prompt — Android nativo / iOS instruções */}
+      <PwaInstallPrompt salon={salon} />
     </div>
   )
 }
